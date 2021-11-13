@@ -76,12 +76,12 @@ public class RandomCards {
 		
 		for (int p = 0; p < numberOfPlayers; p++) {
 			int count = 0;
-			int cardIndex = 0;
+			int i = 0;
 			Card[] cardSet = new Card[9];
 			while (count < 9) {
-				Card card = deck[cardIndex];
+				Card card = deck[i];
 				cardSet[count] = card;
-				cardIndex += 4;
+				i =i+ 4;
 				count++;
 			}
 			playerList.get(p).setCard(cardSet);
@@ -90,6 +90,12 @@ public class RandomCards {
 	
 		
 	}
+	public void printDeck() {
+		for (int i = 0; i < deck.length; i++) {
+			System.out.println(deck[i]);
+		}
+	}
+	public void 
 	
 
 	public static void main(String[] args) {
@@ -101,6 +107,7 @@ public class RandomCards {
 		rv.addPlayer(num);
 		rv.orderPlayerTurn(num);
 		rv.distributeCards(num);
+		
 				
 	
 		

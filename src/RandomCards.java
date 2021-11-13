@@ -69,7 +69,26 @@ public class RandomCards {
 				temporaryArray[j] = temp;
 			}
 			deckOfCards[i] = temporaryArray;
+		
 		}
+	}
+	public void distributeCards(int numberOfPlayers) {
+		
+		for (int p = 0; p < numberOfPlayers; p++) {
+			int count = 0;
+			int cardIndex = 0;
+			Card[] cardSet = new Card[9];
+			while (count < 9) {
+				Card card = deck[cardIndex];
+				cardSet[count] = card;
+				cardIndex += 4;
+				count++;
+			}
+			playerList.get(p).setCard(cardSet);
+		}
+			
+	
+		
 	}
 	
 
@@ -81,7 +100,8 @@ public class RandomCards {
 		assignCard();
 		rv.addPlayer(num);
 		rv.orderPlayerTurn(num);
-		
+		rv.distributeCards(num);
+				
 	
 		
 	}

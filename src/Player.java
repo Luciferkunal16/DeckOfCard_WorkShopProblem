@@ -1,9 +1,12 @@
 package cards;
 
+import java.util.Arrays;
+
 public class Player {
 	String firstname;
 	String lastName;
 	int playerTurn;
+	Card[] card;
 	
 
 	public Player(String firstname, String lastName) {
@@ -36,6 +39,13 @@ public class Player {
 	public void setPlayerTurn(int playerTurn) {
 		this.playerTurn = playerTurn;
 	}
+	public Card[] getCard() {
+		return card;
+	}
+
+	public void setCard(Card[] card) {
+		this.card = card;
+	}
 
 	
 
@@ -43,7 +53,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [ first name= "+firstname + " Last Name = "+lastName+" Player Turn "+playerTurn+" ]";
+		return "Player [ first name= "+firstname + " Last Name = "+lastName+" Player Turn "+playerTurn+"card="	+ Arrays.toString(card) +" ]";
 	}
 }
 

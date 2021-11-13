@@ -2,6 +2,7 @@ package cards;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -9,15 +10,18 @@ import java.util.Scanner;
 public class RandomCards {
 	static String[] suit = { "Spades", "Hearts", "Diamond", "Clubs" };
 	static String[] rank = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
-	static String[][] cardCombo = new String[4][13];
+    static String[][] deckOfCards = { suit, rank };
+	 static Card[] deck = new Card[52];
 
 	static Scanner inp = new Scanner(System.in);
 	static List<Player> playerList = new ArrayList<Player>();
 
 	public static void assignCard() {
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 13; j++) {
-				cardCombo[i][j] = suit[i] + rank[j];
+		int i = 0;
+		for (String s : deckOfCards[0]) {
+			for (String value : deckOfCards[1]) {
+				deck[i] = new Card(s, value);
+				i++;
 			}
 		}
 	}
@@ -52,11 +56,28 @@ public class RandomCards {
 			playerList.get(i).setPlayerTurn(turn);
 		}
 	}
+	public void shuffleDeckOfCard() {
+		Random rand = new Random();
+		for (int i = 0; i < deckOfCards.length; i++) {
+			String[] temporaryArray = deckOfCards[i];
+			for (int j = 0; j < temporaryArray.length; j++) {
+			
+				int r = j + rand.nextInt(temporaryArray.length - j);
+			
+				String temp = temporaryArray[r];
+				temporaryArray[r] = temporaryArray[j];
+				temporaryArray[j] = temp;
+			}
+			deckOfCards[i] = temporaryArray;
+		}
+	}
+	
 
 	public static void main(String[] args) {
 		RandomCards rv=new RandomCards()	;
 		System.out.println("Enter number of players");
 		int num = inp.nextInt();
+		rv.shuffleDeckOfCard();
 		assignCard();
 		rv.addPlayer(num);
 		rv.orderPlayerTurn(num);

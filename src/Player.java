@@ -43,7 +43,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [ first name= "+firstname + " Last Name = "+lastName+" Player Turn "+playerTurn;
+		return "Player [ first name= "+firstname + " Last Name = "+lastName+" Player Turn "+playerTurn+" ]";
 	}
 }
 
